@@ -282,7 +282,9 @@
         const terms = normalize(input.value).trim().split(/\s+/).filter(Boolean);
         let count = 0;
         cards.forEach(card => {
-          const audienceMatch = profile === "todos" || card.dataset.audience.split(" ").includes(profile);
+          const audienceMatch = card.querySelector('[data-link="laboratorios"]')
+          ? profile === "docente"
+          : profile === "todos" || card.dataset.audience.split(" ").includes(profile);
           const searchMatch = terms.every(term => normalize(card.textContent).includes(term));
           card.hidden = !(audienceMatch && searchMatch);
           if (!card.hidden) count++;
