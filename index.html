@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Central dos cursos de Informática e Desenvolvimento de Sistemas do Campus São Cristóvão: solicitações, demandas e orientações.">
+  <meta name="theme-color" content="#154d3d">
+  <title>Central do Curso | Informática e Desenvolvimento de Sistemas</title>
+
+  <!-- CONFIGURAÇÃO: preencha os links entre aspas. Deixe vazio o que ainda não tiver.
+       Use links de RESPOSTA dos formulários, nunca links de edição ou planilhas de respostas.
+       Você pode usar o mesmo formulário em mais de um botão.
+       Este arquivo apenas abre os links; quem recebe as solicitações é o formulário.
+       Publique somente este index.html na raiz do seu repositório GitHub.
+  -->
+  <script>
+    const LINKS = {
+      estudantes: "",
+      docentes: "",
+      laboratorios: "",
+      atendimento: "",
+      sugestoes: "",
+      horarios: "",
+      calendario: "",
+      documentos: ""
+    };
+  </script>
+  <style>
+    :root { --forest:#154d3d; --deep:#0b3329; --lime:#d5ee8b; --ink:#18382f; --muted:#52695f; --paper:#f6f7f2; --line:#dce4d9; --white:#fff; --radius:18px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:24px; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    a { color:inherit; }
+    button,input { font:inherit; }
+    button,a,input { -webkit-tap-highlight-color:transparent; }
+    :focus-visible { outline:3px solid #8a4c00; outline-offset:4px; }
+    [hidden] { display:none !important; }
+    .wrap { width:min(1120px,calc(100% - 48px)); margin:auto; }
+    .skip { position:absolute; top:-100px; left:16px; z-index:10; background:white; padding:10px 16px; }
+    .skip:focus { top:12px; }
+    .top { background:white; border-bottom:1px solid var(--line); }
+    .header { min-height:92px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; gap:13px; align-items:center; text-decoration:none; }
+    .monogram { display:grid; place-items:center; background:var(--forest); color:white; width:44px; height:44px; border-radius:12px; font-weight:750; font-size:15px; }
+    .brand strong { display:block; font-size:17px; line-height:1.4; }
+    .brand small { display:block; font-size:12px; color:var(--muted); }
+    nav { display:flex; flex-wrap:wrap; gap:10px 24px; }
+    nav a { padding:10px 0; text-decoration:none; font-size:14px; font-weight:600; }
+    nav a:hover { text-decoration:underline; text-underline-offset:5px; }
+    .hero { margin:32px auto 52px; border-radius:24px; overflow:hidden; color:white; background:var(--forest); }
+    .hero-inner { display:grid; grid-template-columns:1.45fr 1fr; gap:40px; padding:52px; align-items:center; }
+    .eyebrow { margin:0 0 16px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1.6px; }
+    .hero .eyebrow { color:var(--lime); }
+    h1 { max-width:650px; margin:0 0 20px; font-size:clamp(32px,4.4vw,50px); line-height:1.12; letter-spacing:-1.8px; font-weight:700; }
+    .hero-description { max-width:490px; color:#e0ebe5; font-size:16px; margin:0; }
+    .hero-label { margin-top:28px; padding-top:20px; border-top:1px solid #497160; font-size:13px; color:#e0ebe5; }
+    .profiles { display:grid; gap:12px; }
+    .profile { width:100%; display:flex; align-items:center; justify-content:space-between; gap:20px; text-align:left; padding:22px; border:1px solid #7d9b7d; border-radius:14px; background:transparent; color:white; cursor:pointer; }
+    .profile.student { background:var(--lime); color:var(--deep); border-color:var(--lime); }
+    .profile:hover { transform:translateY(-2px); }
+    .profile strong { display:block; font-size:18px; }
+    .profile small { display:block; margin-top:3px; font-size:13px; }
+    .arrow { display:block; width:20px; height:20px; flex-shrink:0; background:currentColor; clip-path:polygon(20% 10%,90% 10%,90% 80%,77% 80%,77% 32%,19% 90%,10% 81%,68% 23%,20% 23%); }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:24px; }
+    .section-head h2 { margin:0; font-size:30px; line-height:1.25; letter-spacing:-.8px; }
+    .section-head p { margin:8px 0 0; color:var(--muted); }
+    .section-kicker { color:var(--forest); margin-bottom:8px; }
+    .search-box { min-width:240px; }
+    .search-box label { display:block; font-size:12px; font-weight:650; margin-bottom:6px; }
+    .search-box input { width:100%; border:1px solid #b9c8b9; background:white; border-radius:10px; padding:11px 14px; color:var(--ink); }
+    .filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
+    .filter { border:1px solid #bbcbbd; color:var(--muted); background:transparent; min-height:44px; padding:8px 18px; border-radius:99px; cursor:pointer; font-weight:600; font-size:14px; }
+    .filter[aria-pressed="true"] { color:white; border-color:var(--forest); background:var(--forest); }
+    .result-count { color:var(--muted); font-size:12px; margin:0 0 18px; }
+    .cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .card { display:flex; flex-direction:column; padding:26px; background:white; border:1px solid var(--line); border-radius:var(--radius); min-width:0; }
+    .card-top { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:24px; }
+    .icon { width:42px; height:42px; border-radius:12px; display:grid; place-items:center; background:#eef3e8; color:var(--forest); }
+    .icon svg { width:23px; height:23px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+    .tag { font-size:10px; font-weight:700; letter-spacing:.7px; text-transform:uppercase; padding:5px 8px; border:1px solid var(--line); border-radius:5px; color:var(--muted); }
+    .card h3 { font-size:19px; line-height:1.35; margin:0 0 10px; letter-spacing:-.3px; }
+    .card p { margin:0 0 22px; color:var(--muted); font-size:14px; }
+    .action-link { margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:12px; min-height:44px; border-top:1px solid var(--line); padding-top:16px; font-size:14px; font-weight:650; text-decoration:none; }
+    .action-link[href]:hover { text-decoration:underline; text-underline-offset:4px; }
+    .action-link > span:last-child { font-size:0; width:15px; height:15px; flex-shrink:0; background:currentColor; clip-path:polygon(20% 10%,90% 10%,90% 80%,77% 80%,77% 32%,19% 90%,10% 81%,68% 23%,20% 23%); }
+    [aria-disabled="true"] { color:var(--muted); cursor:default; }
+    .empty { background:white; padding:26px; border:1px solid var(--line); border-radius:var(--radius); }
+    .resources-section { margin-top:56px; padding:36px; background:#eaf0e3; border:1px solid #d7e1ce; border-radius:var(--radius); }
+    .resources-section h2 { margin:0 0 6px; font-size:24px; letter-spacing:-.5px; }
+    .resources-section > p { margin:0 0 22px; color:var(--muted); }
+    .resources { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .resource { border-radius:12px; background:white; padding:18px; min-width:0; }
+    .resource h3 { font-size:16px; margin:0 0 8px; }
+    .resource .action-link { border-top:0; padding-top:0; font-size:12px; }
+    .guide { padding:52px 0; }
+    .guide h2 { margin:0 0 24px; font-size:24px; letter-spacing:-.5px; }
+    .steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; counter-reset:steps; list-style:none; margin:0; padding:0; }
+    .steps li { counter-increment:steps; }
+    .steps li::before { content:"0" counter(steps); display:block; margin-bottom:10px; color:var(--forest); font-size:13px; font-weight:750; letter-spacing:1px; }
+    .steps strong { display:block; font-size:16px; }
+    .steps p { color:var(--muted); font-size:14px; margin:6px 0 0; }
+    footer { border-top:1px solid var(--line); padding:24px 0; color:var(--muted); font-size:12px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; }
+    footer a { text-underline-offset:3px; }
+    noscript p { background:#fff3cc; padding:16px; border-radius:10px; }
+    @media(max-width:900px) {
+      .hero-inner { padding:36px; gap:30px; }
+      .cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .section-head { align-items:start; }
+    }
+    @media(max-width:650px) {
+      .wrap { width:calc(100% - 32px); }
+      .header { flex-direction:column; align-items:start; gap:10px; padding:18px 0 10px; }
+      nav { gap:22px; }
+      .hero { margin-top:20px; margin-bottom:36px; }
+      .hero-inner { grid-template-columns:1fr; padding:28px 24px; gap:26px; }
+      h1 { letter-spacing:-1px; }
+      .profiles { grid-template-columns:1fr 1fr; gap:10px; }
+      .profile { padding:17px 14px; gap:8px; align-items:start; }
+      .profile strong { font-size:16px; }
+      .profile small { font-size:12px; }
+      .section-head { flex-direction:column; gap:18px; }
+      .search-box { width:100%; min-width:0; }
+      .cards,.resources,.steps { grid-template-columns:1fr; }
+      .card { padding:24px; }
+      .card-top { margin-bottom:18px; }
+      .resources-section { margin-top:36px; padding:24px; }
+      .guide { padding:36px 0; }
+      .footer-inner { flex-direction:column; gap:8px; }
+    }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .profile:hover { transform:none; } }
+    @media print { nav,.profiles,.filters,.search-box { display:none; } .hero { background:white; color:black; } .hero-description,.hero-label,.hero .eyebrow { color:black; } .cards { grid-template-columns:1fr 1fr; } .card { break-inside:avoid; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#solicitacoes">Pular para solicitações</a>
+  <header class="top">
+    <div class="wrap header">
+      <a class="brand" href="#inicio" aria-label="Central do Curso, início">
+        <span class="monogram" aria-hidden="true">SC</span>
+        <span><strong>Central do Curso</strong><small>IFS · Campus São Cristóvão</small></span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="#solicitacoes">Solicitações</a><a href="#documentos">Documentos</a><a href="#orientacoes">Como solicitar</a>
+      </nav>
+    </div>
+  </header>
+  <main id="inicio" class="wrap">
+    <section class="hero" aria-labelledby="titulo">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">Informática e Desenvolvimento de Sistemas</p>
+          <h1 id="titulo">Seu ponto de encontro<br>com a coordenação.</h1>
+          <p class="hero-description">Registre uma solicitação, compartilhe uma demanda e encontre as orientações do curso em um só lugar.</p>
+          <div class="hero-label">Um espaço para estudantes e docentes.</div>
+        </div>
+        <div class="profiles" aria-label="Escolha seu perfil">
+          <button class="profile student" type="button" data-profile="estudante"><span><strong>Sou estudante</strong><small>Solicitações e orientações</small></span><span class="arrow" aria-hidden="true"></span></button>
+          <button class="profile" type="button" data-profile="docente"><span><strong>Sou docente</strong><small>Demandas e apoio ao ensino</small></span><span class="arrow" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </section>
+    <noscript><p>Ative o JavaScript do navegador para acessar os links dos formulários.</p></noscript>
+    <section id="solicitacoes" aria-labelledby="titulo-solicitacoes">
+      <div class="section-head">
+        <div><p class="eyebrow section-kicker">Canais de atendimento</p><h2 id="titulo-solicitacoes">Como podemos ajudar?</h2><p>Escolha o canal que corresponde à sua necessidade.</p></div>
+        <div class="search-box"><label for="busca">Buscar um canal</label><input type="search" id="busca" placeholder="Ex.: laboratório, atendimento…" autocomplete="off"></div>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrar canais por perfil">
+        <button class="filter" data-filter="todos" aria-pressed="true" type="button">Todos</button>
+        <button class="filter" data-filter="estudante" aria-pressed="false" type="button">Estudantes</button>
+        <button class="filter" data-filter="docente" aria-pressed="false" type="button">Docentes</button>
+      </div>
+      <p id="contagem" class="result-count" role="status" aria-live="polite"></p>
+      <div class="cards" id="canais">
+        <article class="card" data-audience="estudante">
+          <div class="card-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 8 9-5 9 5-9 5-9-5Z M6 10v7c4 3 8 3 12 0v-7 M21 8v8"/></svg></span><span class="tag">Estudantes</span></div>
+          <h3>Solicitações acadêmicas</h3><p>Apresente uma dúvida, relate uma dificuldade nas disciplinas ou registre uma solicitação à coordenação.</p><a class="action-link" data-link="estudantes" data-label="Acessar formulário"><span>Canal em preparação</span><span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card" data-audience="docente">
+          <div class="card-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z M8 21l4-5 4 5 M8 8h8 M8 12h4"/></svg></span><span class="tag">Docentes</span></div>
+          <h3>Demandas de ensino</h3><p>Compartilhe necessidades pedagógicas e demandas relacionadas às suas atividades no curso.</p><a class="action-link" data-link="docentes" data-label="Acessar formulário"><span>Canal em preparação</span><span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card" data-audience="estudante docente">
+          <div class="card-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 21h8 M12 16v5 M7 12l3-3-3-3 M13 12h4"/></svg></span><span class="tag">Todos</span></div>
+          <h3>Laboratórios e equipamentos</h3><p>Informe problemas em computadores, softwares, conexão ou outros recursos utilizados nas aulas.</p><a class="action-link" data-link="laboratorios" data-label="Registrar demanda"><span>Canal em preparação</span><span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card" data-audience="estudante docente">
+          <div class="card-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 11a8 8 0 0 1-8 8H8l-5 3 1-6a8 8 0 1 1 17-5Z M8 10h8 M8 14h5"/></svg></span><span class="tag">Todos</span></div>
+          <h3>Atendimento com a coordenação</h3><p>Solicite uma conversa para tratar de uma situação que precise de orientação individual.</p><a class="action-link" data-link="atendimento" data-label="Solicitar atendimento"><span>Canal em preparação</span><span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card" data-audience="estudante docente">
+          <div class="card-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18h6 M9 21h6 M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 2H9s0-1-1-2Z"/></svg></span><span class="tag">Todos</span></div>
+          <h3>Sugestões para o curso</h3><p>Proponha melhorias, atividades e ideias para contribuir com a experiência de quem estuda e ensina aqui.</p><a class="action-link" data-link="sugestoes" data-label="Enviar sugestão"><span>Canal em preparação</span><span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+      <p class="empty" id="sem-resultados" hidden>Nenhum canal encontrado. Tente outra palavra ou selecione o filtro “Todos”.</p>
+    </section>
+    <section class="resources-section" id="documentos" aria-labelledby="titulo-documentos">
+      <h2 id="titulo-documentos">O que você precisa, à mão.</h2><p>Acessos rápidos para consultar ao longo do semestre.</p>
+      <div class="resources">
+        <div class="resource"><h3>Horários das turmas</h3><a class="action-link" data-link="horarios" data-label="Consultar horários"><span>Em preparação</span><span aria-hidden="true">↗</span></a></div>
+        <div class="resource"><h3>Calendário acadêmico</h3><a class="action-link" data-link="calendario" data-label="Ver calendário"><span>Em preparação</span><span aria-hidden="true">↗</span></a></div>
+        <div class="resource"><h3>Documentos do curso</h3><a class="action-link" data-link="documentos" data-label="Acessar documentos"><span>Em preparação</span><span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+    <section class="guide" id="orientacoes" aria-labelledby="titulo-orientacoes">
+      <h2 id="titulo-orientacoes">Para registrar sua demanda</h2>
+      <ol class="steps">
+        <li><strong>Escolha o canal</strong><p>Localize o assunto da sua solicitação e abra o formulário correspondente.</p></li>
+        <li><strong>Conte o que precisa</strong><p>Descreva a situação com clareza. Quando necessário, informe turma, disciplina, data e local.</p></li>
+        <li><strong>Informe seu contato</strong><p>Confira o e-mail preenchido no formulário para que a coordenação possa retornar.</p></li>
+      </ol>
+    </section>
+  </main>
+  <footer><div class="wrap footer-inner"><span>Coordenação dos Cursos de Informática · IFS — Campus São Cristóvão</span><a href="#inicio">Voltar ao início</a></div></footer>
+  <script>
+    (() => {
+      "use strict";
+      // Links vazios ou inválidos permanecem inativos: nenhuma solicitação é simulada.
+      document.querySelectorAll("[data-link]").forEach(link => {
+        const value = String(LINKS[link.dataset.link] || "").trim();
+        let valid = false;
+        try { const url = new URL(value); valid = url.protocol === "https:"; } catch (_) {}
+        if (valid) {
+          link.href = value;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.referrerPolicy = "no-referrer";
+          link.firstElementChild.textContent = link.dataset.label;
+          link.setAttribute("aria-label", link.dataset.label + ": " + link.parentElement.querySelector("h3").textContent + " (abre em nova aba)");
+        } else {
+          link.setAttribute("aria-disabled", "true");
+          link.setAttribute("role", "link");
+          link.lastElementChild.hidden = true;
+        }
+      });
+      let profile = "todos";
+      const input = document.getElementById("busca");
+      const cards = Array.from(document.querySelectorAll(".card"));
+      const normalize = value => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      function filterCards() {
+        const terms = normalize(input.value).trim().split(/\s+/).filter(Boolean);
+        let count = 0;
+        cards.forEach(card => {
+          const audienceMatch = profile === "todos" || card.dataset.audience.split(" ").includes(profile);
+          const searchMatch = terms.every(term => normalize(card.textContent).includes(term));
+          card.hidden = !(audienceMatch && searchMatch);
+          if (!card.hidden) count++;
+        });
+        document.getElementById("contagem").textContent = count + (count === 1 ? " canal encontrado" : " canais encontrados");
+        document.getElementById("sem-resultados").hidden = count > 0;
+        document.querySelectorAll("[data-filter]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.filter === profile)));
+      }
+      document.querySelectorAll("[data-filter]").forEach(button => button.addEventListener("click", () => { profile = button.dataset.filter; filterCards(); }));
+      document.querySelectorAll("[data-profile]").forEach(button => button.addEventListener("click", () => {
+        profile = button.dataset.profile;
+        input.value = "";
+        filterCards();
+        document.getElementById("solicitacoes").scrollIntoView({ block:"start" });
+        document.querySelector('[data-filter="' + profile + '"]').focus({ preventScroll:true });
+      }));
+      input.addEventListener("input", filterCards);
+      filterCards();
+    })();
+  </script>
+</body>
+</html>
