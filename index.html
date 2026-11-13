@@ -92,7 +92,7 @@
     .guide h2 { margin:0 0 24px; font-size:24px; letter-spacing:-.5px; }
     .steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; counter-reset:steps; list-style:none; margin:0; padding:0; }
     .steps li { counter-increment:steps; }
-    .steps li::before { content:"0" counter(steps)"º"; display:block; margin-bottom:10px; color:var(--forest); font-size:13px; font-weight:750; letter-spacing:1px; }
+    .steps li::before { content: counter(steps)"º"; display:block; margin-bottom:10px; color:var(--forest); font-size:13px; font-weight:750; letter-spacing:1px; }
     .steps strong { display:block; font-size:16px; }
     .steps p { color:var(--muted); font-size:14px; margin:6px 0 0; }
     footer { border-top:1px solid var(--line); padding:24px 0; color:var(--muted); font-size:12px; }
