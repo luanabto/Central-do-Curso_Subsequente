@@ -126,6 +126,13 @@
     }
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .profile:hover { transform:none; } }
     @media print { nav,.profiles,.filters,.search-box { display:none; } .hero { background:white; color:black; } .hero-description,.hero-label,.hero .eyebrow { color:black; } .cards { grid-template-columns:1fr 1fr; } .card { break-inside:avoid; } }
+.logo-ifs {
+  height: 80px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+}   
   </style>
 </head>
 <body>
@@ -133,8 +140,12 @@
   <header class="top">
     <div class="wrap header">
       <a class="brand" href="#inicio" aria-label="Central dos Cursos Subsequentes, início">
-        <span class="monogram" aria-hidden="true">SC</span>
-        <span><strong>Central dos Cursos Subsequentes</strong><small>IFS · Campus São Cristóvão</small></span>
+        <img
+          src="logo-ifs.png"
+          alt="IFS — Campus São Cristóvão"
+          class="logo-ifs"
+        >
+        <span><strong>Central dos Cursos Subsequentes de Informática</strong><small>IFS · Campus São Cristóvão</small></span>
       </a>
       <nav aria-label="Navegação principal">
         <a href="#solicitacoes">Solicitações</a><a href="#documentos">Documentos</a><a href="#orientacoes">Como solicitar</a>
